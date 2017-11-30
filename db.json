@@ -1,12 +1,12 @@
 {
   "todos": [
     {
-      "text": "baruuu",
+      "text": "baruuudasdasdasd",
       "completed": true,
       "id": 1
     },
     {
-      "text": "gituan eee",
+      "text": "gituan huhu",
       "completed": true,
       "id": 2
     },
@@ -54,6 +54,16 @@
       "text": "aku beneran",
       "completed": false,
       "id": 12
+    },
+    {
+      "text": "asd",
+      "completed": false,
+      "id": 13
+    },
+    {
+      "text": "uhuuy",
+      "completed": false,
+      "id": 14
     }
   ]
 }

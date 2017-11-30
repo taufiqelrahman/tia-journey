@@ -19,9 +19,12 @@ export const GET_TODOS = 'GET_TODOS'
 export const API_FAILED = 'API_FAILED'
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
+export const EDIT_TODO = 'EDIT_TODO'
 
-export const HANDLE_TEXT = 'HANDLE_TEXT'
+export const HANDLE_TEXT_ADD = 'HANDLE_TEXT_ADD'
+export const HANDLE_TEXT_EDIT = 'HANDLE_TEXT_EDIT'
 export const HANDLE_ADD = 'HANDLE_ADD'
+export const HANDLE_EDIT = 'HANDLE_EDIT'
 
 // ------------------------------------
 // Actions
@@ -82,15 +85,47 @@ export function toggleTodo(todo) {
     })
   }
 }
-export function handleText(e) {
+export function editTodo(todo) {
+  return (dispatch, getState) => {
+    let bodyData = {
+      text: todo.text,
+      completed: todo.completed
+    }
+    axios.put(`http://localhost:3000/todos/${todo.id}`, bodyData, {"Content-Type":"application/json"})
+    .then(res => {
+      dispatch({
+        type    : EDIT_TODO,
+        payload : res.data
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type    : API_FAILED
+      })
+    })
+  }
+}
+
+export function handleTextAdd(e) {
   return {
-    type    : HANDLE_TEXT,
+    type    : HANDLE_TEXT_ADD,
     payload : e.target.value
+  }
+}
+export function handleTextEdit(todo, e) {
+  return {
+    type    : EDIT_TODO,
+    payload : { id: todo.id, text: e.target.value }
   }
 }
 export function handleAdd() {
   return {
     type    : HANDLE_ADD
+  }
+}
+export function handleEdit() {
+  return {
+    type    : HANDLE_EDIT
   }
 }
 
@@ -107,8 +142,12 @@ const ACTION_HANDLERS = {
   [TOGGLE_TODO]           : (state, action) => ({...state,
     todos: state.todos.map(todo => (todo.id === action.payload) ? {...todo, completed: !todo.completed} : todo)
   }),
-  [HANDLE_TEXT]           : (state, action) => ({...state, text: action.payload}),
-  [HANDLE_ADD]            : (state, action) => ({...state, isAdd: !state.isAdd})
+  [EDIT_TODO]           : (state, action) => ({...state,
+    todos: state.todos.map(todo => (todo.id === action.payload.id) ? {...todo, text: action.payload.text} : todo)
+  }),
+  [HANDLE_TEXT_ADD]       : (state, action) => ({...state, text: action.payload}),
+  [HANDLE_ADD]            : (state, action) => ({...state, isAdd: !state.isAdd}),
+  [HANDLE_EDIT]           : (state, action) => ({...state, isEdit: !state.isEdit}),
 }
 
 // ------------------------------------
