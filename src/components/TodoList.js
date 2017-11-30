@@ -19,8 +19,11 @@ class TodoList extends React.Component {
       rendered.push(
         <li key={todo.id} style={{ marginBottom: 15 }}>
           { isEdit ?
-          <div>
-            <a className="waves-effect waves-light btn red" onClick={actions.deleteTodo.bind(this, todo.id)}>
+          <div className="row">
+            <a
+              style={{ marginRight: 15 }}
+              className="waves-effect waves-light btn red col s2"
+              onClick={actions.deleteTodo.bind(this, todo.id)}>
               <i className="material-icons">delete</i>
             </a>
             <input
@@ -29,6 +32,7 @@ class TodoList extends React.Component {
               onKeyPress={this.handleEnter.bind(this)}
               onBlur={actions.editTodo.bind(this, todo)}
               onChange={actions.handleTextEdit.bind(this, todo)}
+              className="col s9"
             />
           </div>
           : <div><input type="checkbox" id={todo.id} onChange={actions.toggleTodo.bind(this, todo)} checked={todo.completed}/>
