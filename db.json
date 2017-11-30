@@ -1,18 +1,8 @@
 {
   "todos": [
     {
-      "text": "asd",
+      "text": "ini benerdan",
       "completed": true,
-      "id": 7
-    },
-    {
-      "text": "this is new hehe",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "text": "ini beneran",
-      "completed": false,
       "id": 10
     },
     {
@@ -21,14 +11,9 @@
       "id": 11
     },
     {
-      "text": "d",
+      "text": "asd",
       "completed": false,
-      "id": 12
-    },
-    {
-      "text": "q",
-      "completed": false,
-      "id": 13
+      "id": 14
     }
   ]
 }

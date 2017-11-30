@@ -168,7 +168,7 @@ const ACTION_HANDLERS = {
     ...state.todos.slice(state.todos.findIndex(todo => todo.id === action.payload) + 1)]
   }),
   [HANDLE_TEXT_ADD]     : (state, action) => ({...state, text: action.payload}),
-  [HANDLE_ADD]          : (state, action) => ({...state, isAdd: !state.isAdd}),
+  [HANDLE_ADD]          : (state, action) => ({...state, isAdd: !state.isAdd, text: ''}),
   [HANDLE_EDIT]         : (state, action) => ({...state, isEdit: !state.isEdit}),
   [RESET_MODES]         : (state, action) => ({...state, isEdit: false, isAdd: false})
 }
