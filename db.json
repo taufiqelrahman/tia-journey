@@ -1,8 +1,9 @@
 {
   "todos": [
     {
-      "text": "asd",
+      "text": "ini benerdan",
       "completed": true,
+<<<<<<< HEAD
       "id": 7
     },
     {
@@ -13,12 +14,22 @@
     {
       "text": "ini beneran",
       "completed": true,
+=======
+>>>>>>> dev
       "id": 10
     },
     {
       "text": "ada lagi ya",
       "completed": false,
       "id": 11
+<<<<<<< HEAD
+=======
+    },
+    {
+      "text": "asd",
+      "completed": false,
+      "id": 14
+>>>>>>> dev
     }
   ]
 }

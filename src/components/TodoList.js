@@ -48,12 +48,10 @@ class TodoList extends React.Component {
     const { handleTextAdd, handleAdd, handleEdit, logout } = this.props.actions
     return (
       <div className="left-align">
-        { !isAdd ?
-          <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Add</a>
-        : <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn black-text white">Cancel</a> }
-        { !isEdit ?
-          <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Edit</a>
-        : <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn black-text white">Done</a> }
+        { !isAdd && !isEdit ? <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Add</a> : null }
+        { isAdd ? <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Cancel</a> : null }
+        { !isAdd && !isEdit ? <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Edit</a> : null }
+        { isEdit ? <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Done</a> : null }
         <a onClick={logout.bind(this)} className="waves-effect waves-light btn">Logout</a>
         <ul>
           { isAdd ?
