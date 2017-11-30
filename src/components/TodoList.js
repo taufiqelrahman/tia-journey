@@ -21,7 +21,7 @@ class TodoList extends React.Component {
           { isEdit ?
           <div className="row">
             <a
-              style={{ marginRight: 15 }}
+              style={{ marginRight: 15, width: 50 }}
               className="waves-effect waves-light btn red col s2"
               onClick={actions.deleteTodo.bind(this, todo.id)}>
               <i className="material-icons">delete</i>
