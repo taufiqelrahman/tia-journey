@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from './modules/todolist'
+import Layout from './layouts/layout'
 import TodoList from './components/TodoList'
 
 class App extends React.Component {
@@ -38,4 +39,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Layout(App));
