@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from './modules/todolist'
+import TodoList from './components/TodoList'
 
 class App extends React.Component {
   render() {
     const { todoList, actions } = this.props;
     return (
       <div>
-        hello
+        <TodoList todoList={todoList} actions={actions}/>
       </div>
     );
   }
