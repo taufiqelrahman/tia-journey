@@ -20,6 +20,7 @@ export const API_FAILED = 'API_FAILED'
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const EDIT_TODO = 'EDIT_TODO'
+export const DELETE_TODO = 'DELETE_TODO'
 
 export const HANDLE_TEXT_ADD = 'HANDLE_TEXT_ADD'
 export const HANDLE_TEXT_EDIT = 'HANDLE_TEXT_EDIT'
@@ -105,6 +106,22 @@ export function editTodo(todo) {
     })
   }
 }
+export function deleteTodo(id) {
+  return (dispatch, getState) => {
+    axios.delete(`http://localhost:3000/todos/${id}`)
+    .then(res => {
+      dispatch({
+        type    : DELETE_TODO,
+        payload : id
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type    : API_FAILED
+      })
+    })
+  }
+}
 
 export function handleTextAdd(e) {
   return {
@@ -144,6 +161,10 @@ const ACTION_HANDLERS = {
   }),
   [EDIT_TODO]           : (state, action) => ({...state,
     todos: state.todos.map(todo => (todo.id === action.payload.id) ? {...todo, text: action.payload.text} : todo)
+  }),
+  [DELETE_TODO]           : (state, action) => ({...state,
+    todos: [...state.todos.slice(0, state.todos.findIndex(todo => todo.id === action.payload)),
+    ...state.todos.slice(state.todos.findIndex(todo => todo.id === action.payload) + 1)]
   }),
   [HANDLE_TEXT_ADD]       : (state, action) => ({...state, text: action.payload}),
   [HANDLE_ADD]            : (state, action) => ({...state, isAdd: !state.isAdd}),
