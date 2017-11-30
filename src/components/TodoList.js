@@ -50,10 +50,10 @@ class TodoList extends React.Component {
       <div className="left-align">
         { !isAdd ?
           <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Add</a>
-        : <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Cancel</a> }
+        : <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn black-text white">Cancel</a> }
         { !isEdit ?
           <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Edit</a>
-        : <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Done</a> }
+        : <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn black-text white">Done</a> }
         <a onClick={logout.bind(this)} className="waves-effect waves-light btn">Logout</a>
         <ul>
           { isAdd ?
