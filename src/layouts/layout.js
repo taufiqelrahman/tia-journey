@@ -4,10 +4,6 @@ import Footer from './footer'
 
 function Layout(Content) {
   return class Component extends React.Component{
-    constructor(props){
-      super(props);
-    }
-
     render() {
       return (
         <div className="container center-align">

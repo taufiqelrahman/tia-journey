@@ -10,7 +10,7 @@ class TodoList extends React.Component {
     todoList.todos.map(todo => {
       rendered.push(
         <li key={todo.id}>
-          <input type="checkbox" id={todo.id} checked={todo.completed}/>
+          <input type="checkbox" id={todo.id} onChange={actions.toggleTodo.bind(this, todo)} checked={todo.completed}/>
           <label htmlFor={todo.id}>{todo.text}</label>
         </li>
       )

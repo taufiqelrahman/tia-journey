@@ -2,12 +2,12 @@
   "todos": [
     {
       "text": "baruuu",
-      "completed": false,
+      "completed": true,
       "id": 1
     },
     {
       "text": "gituan eee",
-      "completed": false,
+      "completed": true,
       "id": 2
     },
     {
