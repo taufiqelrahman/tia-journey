@@ -26,6 +26,7 @@ export const HANDLE_TEXT_ADD = 'HANDLE_TEXT_ADD'
 export const HANDLE_TEXT_EDIT = 'HANDLE_TEXT_EDIT'
 export const HANDLE_ADD = 'HANDLE_ADD'
 export const HANDLE_EDIT = 'HANDLE_EDIT'
+export const RESET_MODES = 'RESET_MODES'
 
 // ------------------------------------
 // Actions
@@ -150,25 +151,26 @@ export function handleEdit() {
 // Action Handlers of Reducer
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_TODOS]             : (state, action) => ({...state, todos: action.payload}), 
-  [ADD_TODO]              : (state, action) => ({...state, 
+  [GET_TODOS]           : (state, action) => ({...state, todos: action.payload}), 
+  [ADD_TODO]            : (state, action) => ({...state, 
     todos: [...state.todos, { id: action.payload.id, text: action.payload.text, completed: false }],
     text: '',
     isAdd: !state.isAdd
   }), 
-  [TOGGLE_TODO]           : (state, action) => ({...state,
+  [TOGGLE_TODO]         : (state, action) => ({...state,
     todos: state.todos.map(todo => (todo.id === action.payload) ? {...todo, completed: !todo.completed} : todo)
   }),
   [EDIT_TODO]           : (state, action) => ({...state,
     todos: state.todos.map(todo => (todo.id === action.payload.id) ? {...todo, text: action.payload.text} : todo)
   }),
-  [DELETE_TODO]           : (state, action) => ({...state,
+  [DELETE_TODO]         : (state, action) => ({...state,
     todos: [...state.todos.slice(0, state.todos.findIndex(todo => todo.id === action.payload)),
     ...state.todos.slice(state.todos.findIndex(todo => todo.id === action.payload) + 1)]
   }),
-  [HANDLE_TEXT_ADD]       : (state, action) => ({...state, text: action.payload}),
-  [HANDLE_ADD]            : (state, action) => ({...state, isAdd: !state.isAdd}),
-  [HANDLE_EDIT]           : (state, action) => ({...state, isEdit: !state.isEdit}),
+  [HANDLE_TEXT_ADD]     : (state, action) => ({...state, text: action.payload}),
+  [HANDLE_ADD]          : (state, action) => ({...state, isAdd: !state.isAdd}),
+  [HANDLE_EDIT]         : (state, action) => ({...state, isEdit: !state.isEdit}),
+  [RESET_MODES]         : (state, action) => ({...state, isEdit: false, isAdd: false})
 }
 
 // ------------------------------------

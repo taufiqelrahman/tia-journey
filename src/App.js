@@ -2,16 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from './modules/todolist'
+// import * as actions from './modules/todolist'
+import actions from './action.js'
 import Layout from './layouts/Layout'
+import Login from './components/Login'
 import TodoList from './components/TodoList'
 
 class App extends React.Component {
   render() {
-    const { todoList, actions } = this.props;
+    const { todoList, login, actions } = this.props;
     return (
       <div>
-        <TodoList todoList={todoList} actions={actions}/>
+        { login ?
+          <TodoList todoList={todoList} actions={actions}/>
+          : <Login actions={actions}/>
+        }
       </div>
     );
   }
@@ -24,7 +29,8 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    todoList: state.todoList
+    todoList: state.todoList,
+    login: state.login
   };
 }
 function mapDispatchToProps(dispatch) {

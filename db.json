@@ -2,11 +2,11 @@
   "todos": [
     {
       "text": "asd",
-      "completed": false,
+      "completed": true,
       "id": 7
     },
     {
-      "text": "okeee",
+      "text": "this is new hehe",
       "completed": false,
       "id": 9
     },

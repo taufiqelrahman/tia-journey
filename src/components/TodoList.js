@@ -45,13 +45,16 @@ class TodoList extends React.Component {
   }
   render() {
     const { isAdd, isEdit, text } = this.props.todoList
-    const { handleTextAdd, handleAdd, handleEdit } = this.props.actions
+    const { handleTextAdd, handleAdd, handleEdit, logout } = this.props.actions
     return (
       <div className="left-align">
-        { !isAdd && !isEdit ? <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Add</a> : null }
+        { !isAdd ?
+          <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Add</a>
+        : <a onClick={handleAdd.bind(this)} className="waves-effect waves-light btn">Cancel</a> }
         { !isEdit ?
           <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Edit</a>
         : <a onClick={handleEdit.bind(this)} className="waves-effect waves-light btn">Done</a> }
+        <a onClick={logout.bind(this)} className="waves-effect waves-light btn">Logout</a>
         <ul>
           { isAdd ?
           <li>
